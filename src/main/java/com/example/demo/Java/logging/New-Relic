@@ -1,0 +1,16 @@
+    we can track throughput, api response time, error rate, etc by new-relic
+
+    two ways to integrate on react/next js
+    1. script tag
+    2. browser agent
+
+    java
+    --------
+    1. add new relic dependency on pom.xml or build.gradle
+    2. add config data like license key, app-name and all in application.yml file.
+
+   -> api endpoints
+   -> response time
+   -> traces
+   -> queries we can run to check captured data.
+   -> we can also trigger our custom hits or custom data trigger, on different - different events.

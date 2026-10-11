@@ -1,0 +1,24 @@
+1. @Primary: Used to define a default/preferred bean when multiple beans of the same type are available for dependency injection.
+2. @Qualifier: Used to specify which particular bean should be injected, generally by its bean name.
+
+
+interface Payment {
+    void pay();
+}
+
+@Component("upi")
+class UpiPayment implements Payment {
+    public void pay() {}
+}
+
+@Component("card")
+@Primary
+class CardPayment implements Payment {
+    public void pay() {}
+}
+
+class Test{
+    public Test(@Qualifier("card") Payment payment){
+
+    }
+}

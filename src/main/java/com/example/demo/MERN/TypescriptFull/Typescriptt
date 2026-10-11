@@ -1,0 +1,183 @@
+Q1. What is typescript ?
+    Answer:
+        Typescript is the superset of Javascript which supports OOPS, with the help of OOPS, we can write readable, reusable and concise codes.
+        Typescript check errors on compile time only, that's why the errors will reduce on typescript application.
+
+Q2. What is the difference between interface and type in TypeScript?
+    Answer:
+        Interface
+        -----------
+        -> Interfaces can extend other interfaces to combine multiple structures.
+
+                interface A {
+                  name: string;
+                }
+
+                interface B extends A {
+                  age: number;
+                }
+
+        Types
+        ------
+                type A = { name: string };
+                type B = { age: number };
+
+                type Person = A & B;
+
+        Also, type supports union (|), which allows a variable to hold multiple data types.
+
+        -> Interface is best for object design and extension, while type is more powerful for unions and complex combinations.
+
+
+Q3. any & unknown
+    Answer:
+        Any
+        ----
+            -> any disables TypeScript type checking.
+            -> You can assign anything and perform any operation.
+                    let value: any = "Amir";
+
+                    value.toUpperCase(); ✅
+                    value(); ✅
+                    value = 100; ✅
+
+        unknown
+        --------
+            -> We are not aware about the data type initially, so before using it, we must check what type it is.
+                    let value: unknown = "Amir";
+
+                    if (typeof value === "string") {
+                      console.log(value.toUpperCase());
+                    }
+
+Q4: What is never type in TypeScript?
+    Answer:
+        -> never is a special type in TypeScript that represents a value that never occurs.
+
+                Eg:
+                    -> 1. Function that never returns
+                            function throwError(message: string): never {
+                              throw new Error(message);
+                            }
+
+                    -> 2. Infinite loop (never ends)
+                            function infiniteLoop(): never {
+                              while (true) {}
+                            }
+
+Q5: What are Generics in TypeScript?
+    Answer:
+        -> Generics in TypeScript allow us to create reusable and type-safe components by using a placeholder type instead of fixed types.
+        -> Generics provide flexibility, reusability, and strong type safety, making code scalable in large applications.
+
+                function pair<T, U>(a: T, b: U) {
+                  return [a, b];
+                }
+                pair<string, number>("Age", 27);
+
+Q6: What is keyof in TypeScript?
+    Answer:
+        -> keyof is a TypeScript operator that returns a union of all keys (property names) of an object type.
+
+        It is mainly used for:
+        ✅ type-safe property access
+        ✅ dynamic key checking
+        ✅ generic constraints
+
+        interface User {
+          name: string;
+          age: number;
+        }
+        type UserKeys = keyof User;
+
+Q7: What is typeof in TypeScript?
+    Answer:
+        typeof is an operator in TypeScript used to extract the type of a variable or object.
+            const config = {
+              apiUrl: "http://localhost:8080",
+              timeout: 5000
+            };
+
+            type ConfigType = typeof config;
+
+            type Keys = keyof typeof config;
+            "apiUrl" | "timeout"
+
+Q8: What are Utility Types in TypeScript? (Partial, Pick, Omit)
+    Answer:
+        Utility Types are built-in generic types provided by TypeScript to transform existing types easily.
+        They help write cleaner and reusable code.
+
+                1. Partial<T>
+                        interface User {
+                          name: string;
+                          age: number;
+                        }
+
+                        let user1: Partial<User> = {
+                          name: "Amir"
+                        };
+
+                    -> ✅ age optional हो गया
+
+                2. Pick<T, K>
+                        type UserName = Pick<User, "name">;
+
+                        let u: UserName = {
+                          name: "Amir"
+                        };
+                    -> Select only specific properties from a type.
+
+                3. Omit<T, K>
+                        type UserWithoutAge = Omit<User, "age">;
+
+                        let u2: UserWithoutAge = {
+                          name: "Amir"
+                        };
+
+                        -> Remove specific properties from a type.
+
+                4. Readonly<T>
+                        type ReadonlyUser = Readonly<User>;
+
+                        let u3: ReadonlyUser = {
+                          name: "Amir",
+                          age: 27
+                        };
+
+                        u3.age = 30; ❌ Error
+
+                        -> Makes properties read-only.
+
+                Short Notes Version
+                ---------------------
+                -> Partial → all optional
+                -> Pick → select keys
+                -> Omit → remove keys
+                -> Readonly → no modification
+
+Q9: What is a Tuple?
+    -> Tuple if a special type of array jisme humlog multiple data types use kr sakte hai. or order and elements v same rehta hai
+
+Q10: What is an Enum in TypeScript?
+    Answer:
+        -> Enums make the code cleaner, more readable, and less error-prone when working with fixed options.
+        -> enum me 2 tarike ke data ko store kr saakte hai ya to numbers hoga y string,
+           aur enum ko redable and maintanable bnane ke liye use krte hai
+
+           enum Role {
+             Admin,
+             User
+           }
+
+            enum Status {
+              Success = "SUCCESS",
+              Failed = "FAILED"
+            }
+
+Q11: Difference between null and undefined in TypeScript?
+    Answer:
+        -> undefined
+            undefined means a variable has been declared but not assigned any value.
+        -> null
+            null means a variable is intentionally assigned an empty or no value.

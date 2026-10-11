@@ -1,0 +1,5 @@
+BeanFactory: basic of IOC container and is used to manage bean lifecycle
+
+ApplicationContext: is used to manage bean lifecycle lekin ye kuch extra features ko v manage krta hai
+                    like event handling, internationalization (i18n),
+                    and automatic registration of bean post-processors.

@@ -1,0 +1,761 @@
+=============================================== Basics =================================================
+
+Q. What is javascript? What is the role of javascript ?
+    Answer:
+        -> Javascript is a programming language that is used for converting static web pages to interactive and dynamic web pages.
+        -> A javascript engine is program present in web browsers that executes Javascript code.
+
+Q. What are variables? What is the difference between var, let and const ?
+    Answer:
+        -> Variables are used to store data.
+
+        var
+        ----------
+        if(true){
+            var data = "20";
+            console.log(data);
+        }
+
+        console.log(data);
+
+             -> Block Level Scope
+
+        //output: 20
+
+        let
+        ---------
+        if(true){
+            let data = "20";
+            console.log(data);
+        }
+
+        console.log(data);
+
+             -> Block Level Scope
+
+        //output: 20 and Reference Error
+
+        const
+        ----------
+        const data = "20";
+        data = "30";
+        console.log(data);
+
+            -> Cannot reassign value again (TypeError: Assignment to constant variable.)
+            -> Block Level Scope
+
+
+Q. What are some important string operations in JS ?
+    Answer:
+        1. substr() 2. substring() 3. replace() 4. search() 5. toLocalLowerCase() 6. toLocalUpperCase()
+        7. indexOf() 8. includes() 9. slice() 10. concat() 11. lastIndexOf() 12. charCodeAt()
+        13. trim() 14. charAt() 15. valueOf() 16. split() 17. toString() 18. match()
+
+Q. What is DOM ? What is the difference between HTML and DOM ?
+    Answer:
+        -> The DOM(Document Object Model) represents the web page as a tree-like-structure that allows Javascript to dynamically access and manipulate
+            the content and structure of the web page.
+
+Q. What are selectors ?
+    Answer:
+
+        -> Selectors in JS help to get specific elements from DOM based on IDs, class names, tag names.
+
+        <div id="myDiv">Test</div>
+        const elementById = document.getElementById("myDiv"); //selectors
+        console.log(elementById.innerHTML);
+
+        -> Some more selectors like
+            1. getElementById() 2. getElementByClassName() 3. getElementByTagName() 4. querySelector()
+            5. querySelectorAll()
+
+        -> multiple divs with same class name
+
+                <div class="myClass">1</div>
+                <div class="myClass">2</div>
+                <div class="myClass">3</div>
+
+                const elements = document.getElementByClassName(myClass);
+                for(let i = 0; i<elements.length; i++){
+                    console.log(elements[i].textContent);
+                }
+
+                //output: 1,2,3
+
+Q. Operators and Types of Operators ?
+    Answer:
+        1. Arithmetic Operators (x + Y)
+        2. Assignment Operators (x += 2)
+        3. Comparison Operators (x > y)
+        4. Logical Operators (x || y)
+        5. String Operators (a + b)
+
+Q. What are the types of conditions statements in JS ?
+    Answer:
+        1. If/else statements (if,elseIf,else)
+        2. Ternary operator (?:)
+        3. Switch statement (swith(data){case:})
+
+Q. What is a loop ? What are the types of loops in JS ?
+    Answer:
+        for, while, do-while, for...of, for..in
+
+Q. What are Functions in JS ? What are the types of function ?
+    Answer:
+        A function is a reusable block of code that perform a specific task.
+
+        Types of functions:
+        ----------------------
+        1. Named function
+        2. Anonymous function
+        3. Function Expression
+        4. Arrow function
+        5. IIFE
+        6. Callback function
+        7. Higher-Order function
+
+Q. What are Arrow Functions in JS ? What is it use ?
+    Answer:
+        ()=>{}
+
+Q. What is Scope in Javascript ?
+    Answer:
+        1. global level scope
+        2. function level scope
+        3. block level scope
+
+Q. What is Hoisting in Javascript ?
+    Answer:
+        a = 20;
+        console.log(a);
+        var a;
+
+        //output: 20
+
+Q. What is the difference between primitive and non-primitive ?
+    Answer:
+        Primitive: (immutable) - store on different memory everytime
+            1. Numbers 2. Strings 3. Booleans 4. Undefined 5. Null
+        Non-Primitive: (mutable)
+            1. Object 2. Array 3. Function 4. Date 5. RegExp
+
+Q. What is type coercion in JS ?
+    Answer:
+        Type Coercion is the automatic conversion of values from one data to another during certain operations or comparisions.
+            Eg.
+                console.log("42" + 42); //4242
+                console.log("42" + true); //43
+                console.log(42 + "42"); //true
+                console.log(true == 1) //true
+
+=============================================== Operators & Conditions =================================================
+
+Q. What is short-circuit evaluation in JS ?
+    Answer:
+        Eg.
+            let result = false && someFunction()
+            console.log(result);
+            //output: false
+
+            let result = true || someFunction()
+            console.log(result);
+            //output: true
+
+Q. What is operator precedence ?
+    Answer:
+        As per operator precedence, operators with higher precedence are evaluated first.
+        => BODMAS (Bracket, Order, Divide, Multiply, Add, Substract)
+
+Q. Difference between rest and spread operator ?
+    Answer:
+        spread operator
+        --------------------
+                var data = [1,2,3,4,5,6];
+
+                console.log(...data);
+
+                function abc(a,b,c){
+                    console.log(a);
+                    console.log(b);
+                    console.log(c);
+                }
+
+                console.log(abc(...data))
+
+        rest operator
+        -----------------------
+                function abc(...data){
+
+                    let result = data.reduce((p,n)=>{
+                        return p+n;
+                    },0);
+
+                    console.log(result);
+                }
+                abc(1,2,3);
+
+Q. What is the slice() method of an Array ?
+    Answer:
+        const array = ["a","b","c","d","e"];
+            let e = array.slice(1,4); //end not included
+            console.log(e)
+
+            //output: ["b","c","d"]
+
+Q. What is the difference between push and concat method of an array ?
+    Answer:
+        Push():
+            push() method will modify the original array itself.
+
+        Concat():
+            Concat() method will create the new array and not modify the original array.
+
+Q. What is the difference between pop() and shift() method in array ?
+    Answer:
+        pop() removes the last element of the array.
+        shift() removes the first element of the array.
+
+Q. What is the splice() method of an Array ?
+    Answer:
+        -> With this we can remove, add and replace elements into array.
+
+            array.splice(startIndex, deleteCount, ...itemsToAdd);
+
+            Eg.
+            1. For Addition
+            --------------------
+                let letters = ["a","b","c"];
+                letters.splice(1,0,'x','y');
+                console.log(letters);
+
+                //output: ['a','x','y','b','c']
+
+            2. For deletion
+            --------------------
+                letters.splice(1,1);
+                console.log(letters);
+
+                //output: ['a','y','b','c']
+
+            3. For replace
+            --------------------
+                letters.splice(1,1,"q");
+                console.log(letters);
+
+                //output: ['a','y','q','c']
+
+
+Q. What are array - like objects in JS ?
+    Answer:
+        Array-like objects are objects that have indexed elements and a length property, similar to arrays, but they may not have
+        all the methods of arrays like push(), pop() & others.
+
+        Eg.
+            1. String
+            -----------------------------
+            const str = "Hello";
+            console.log(str);
+            console.log(str.length);
+            console.log(str[0]);
+
+            2. Argument Objects
+            ------------------------------
+            sum(1,2,3)
+
+            function sum(){
+                console.log(arguments); //output [1,2,3]
+                console.log(arguments.length) //output: 3
+                console.log(arguments[0]); //output 1
+            }
+
+            3. Accessing the HTML elements
+            ---------------------------------
+            var boxes = document.getElementByClassName("box");
+            console.log(boxes[0]);
+            console.log(boxes.length);
+
+Q. Difference between for loop and foreach loop ?
+    Answer:
+        forloop me break, continue wagera use kr sakte h lekin
+        foreach loop me nhi kr sakte h, limitations h
+
+
+=============================================== Functions =================================================
+Q. What is the difference between names and anonymous function ? When to use what is application ?
+    Answer:
+        -> Named function
+           ----------------------
+               function sum(a,b){
+                    return a+b;
+               }
+               console.log(sum(5,3));
+
+               //output: 8
+
+               -> Named functions have name identifier
+               -> Use named functions for big and complex logics.
+               -> Use when you want to reuse one function at multiple places.
+
+        -> Anonymous function
+           ----------------------
+               console.log(function(a,b){
+                 return a*b;
+                }(2,3))
+
+                //output: 20
+
+                -> Anonymous function do not have name identifier and cannot be referenced directly by name.
+                -> Use anonymous functions for small logics
+
+Q. What is function expression in javascript ?
+      Answer:
+         let result = product.filter((e)=>e == query);
+         result is the function expression
+
+Q. What are Callback Functions ? What is its use ?
+    Answer:
+        A callback function is a function that is passed as an argument to another function.
+
+        function display(x,y,operation){
+            var result = operation(x,y);
+            console.log(result);
+        }
+        display(10,5,add);
+
+Q. What is Higher-order function in JS ?
+    Answer:
+        -> Take one more functions as argument (callback function) OR
+        -> Return a function as result.
+        Eg.
+            1. Example 1
+            ------------------------------------
+                function hof(func){
+                    func();
+                }
+
+                hof(sayHello);
+
+                function SayHello(){
+                    console.log("Hello!")
+                }
+
+                //Output: Hello!
+
+            2. Example 1
+            ------------------------------------
+                function createAdder(number){
+                    return function (value){
+                        return value + number;
+                    }
+                }
+
+                const addFive = createAdder(5)
+                console.log(addFive(2));
+
+Q. What is the difference between arguments and parameters ?
+    Answer:
+        -> Arguments
+        -----------------
+            abc(1,6);
+
+        -> Parameters
+        -----------------
+            function abc(a,b){
+                console.log(a + b);
+            }
+
+Q. In how many ways can you pass arguments to a function ?
+    Answer:
+
+        1. Positional Argument
+
+            function abc(a,b){
+               console.log(a + b);
+            }
+            add(3,4);
+
+        2. Named Argument
+            var person = {
+                name: "Amir",
+                role: "Developer"
+            }
+            function greet(person){
+                console.log(person.name +
+                    " "+person.role)
+            }
+            greet(person)
+
+        3. Arguments Object
+
+            sum(1,2,3)
+
+            function sum(){
+                console.log(arguments[0]);
+                //output: 1
+                console.log(arguments[1]);
+                //output: 2
+                console.log(arguments[2]);
+                //output: 3
+                console.log(arguments.length);
+                //output: 3
+            }
+
+Q. How do you use default parameters in a function ?
+    Answer:
+        -> In Javascript, default parameters allow you to specify default values for functions parameters.
+
+        function greet(name = "Amir"){
+            console.log("Hello, "+name+"!");
+        }
+        greet(); //output: Hello Amir
+        greet("Akhil"); //output: Hello Akhil
+
+Q. What is the use of event handling in javascript ?
+    Answer:
+        Eg:
+            -> Event handling is the process of responding to user actions in a web page.
+            -> The adEventListener method os javascript allows to attach an event name and with the function you want to perform on the event.
+
+            <button id="myButton">Click Me<button>
+
+            //get reference to the button element
+            const button = document.getElementById('myButton');
+
+            //add an event listener for the click event
+            button.addEventListener('click', function(){
+                alert('Button Clicked!');
+            });
+
+            Event handling like
+            ----------------------
+                1. Click Event: addEventListener('click',handler)
+                2. Mouseover Event: addEventListener('mouseover',handler)
+                3. Keydown Event: addEventListener('keydown',handler)
+                4. Keyup Event: addEventListener('keyup','handler')
+                5. Submit Event: addEventListener('submit','handler')
+                6. Focus Event: addEventListener('focus','handler')
+                7. Blur Event: addEventListener('blur','handler')
+                7. Change Event: addEventListener('change','handler')
+                7. Load Event: addEventListener('load','handler')
+                7. Resize Event: addEventListener('resize','handler')
+
+Q. What are First-Class functions in JS ?
+    Answer:
+        A programming language is said to have First-Class functions if functions in that language are treated like other variables.
+            1. Assignable
+                const myFunction = function(){
+                    console.log("Interview, Amir!");
+                };
+                myFunction();
+
+            2. Passable as Arguments
+                function double(number){
+                    return number*2;
+                }
+
+                function performOperation(double, value){
+                    return double(value);
+                }
+
+            3. Returnable as Values
+                function createSimpleFunction(){
+                    return function(){
+                        console.log("I am from return function.");
+                    }
+                }
+                const simpleFunction = createSimpleFunction();
+                simpleFunction();
+
+
+Q. What are Pure & Impure functions in JS ?
+    Answer:
+
+        1. Pure function
+        --------------------
+            function add(a,b){
+                return a+b;
+            }
+
+            console.log(add(3,5));
+            console.log(add(3,5));
+
+        -> A pure function is a function that always produces the same output for the same input.
+        -> A pure cannot modify state.
+        -> An pure function cannot have side effects.
+
+        2. Impure function
+        -----------------------------
+            let total = 0;
+
+            function addTotal(value){
+                total += value;
+                return total;
+            }
+
+            console.log(addTotal(5));
+
+        -> An impure function, can produce different outputs for the same input.
+        -> An impure function cannot modify state.
+        -> An impure function can have side effects.
+
+Q. What is Function Currying in JS ?
+    Answer:
+            -> To make flexible, modularity, reusable etc, we break big function into multiple layer functions
+                Eg:
+                    function abc(a){
+                        return function(b){
+                            return function(c){
+                                return a+b+c;
+                            }
+                        }
+                    }
+                    console.log(abc(2)(3)(4));
+
+Q. What are call, apply and bind methods in JS ?
+    Answer:
+            const user = {
+              name: "Amir"
+            };
+
+            function greet(city, country) {
+              console.log(
+                "Hello " + this.name + " from " + city + ", " + country
+              );
+            }
+
+        1. call()
+            -> Function turant call hota hai
+            -> Arguments comma separated
+
+            greet.call(user, "Delhi", "India");
+            //output: Hello Amir from Delhi, India
+
+        2. apply()
+            -> Function turant call hota hai
+            -> Arguments array ke andar
+
+            greet.apply(user, ["Mumbai", "India"]);
+            //output: Hello Amir from Mumbai, India
+
+        3. bind()
+            -> Function turant call nahi hota
+            -> Ek naya function return karta hai
+
+            const newGreet = greet.bind(user, "Pune", "India");
+            newGreet();
+
+            //output: Hello Amir from Pune, India
+
+
+=========================================== DOM =================================================
+
+Q. How do you select, modify, create and remove DOM elements ?
+    Answer:
+        1. Selecting DOM elements
+        -----------------------------
+            getElementById(id), querySelector(selector), querySelectorAll(selector), getElementsByClassName(className),
+            getElementByTagName(tagName), getElementsByName(name)
+
+        2. Modifying element properties and attributes
+        -------------------------------
+            textContent, innerHTML, setAttribute(name,value), removeAttribute(name), style.property
+
+        3. Creating & appending elements
+        ---------------------------------
+            createElement(tagName), appendChild(node), cloneNode(deep)
+
+        4. Removing elements
+        ---------------------------------
+            remove(), removeChild()
+
+        5. Adding and removing event listeners
+        ----------------------------------------
+            addEventListener(type,listener)
+            removeEventListener(type,listener)
+
+Q. What is the difference between querySelector() and querySelectorAll() ?
+    Answer:
+        <div class="myClass">Element 1</div>
+        <div class="myClass">Element 2</div>
+        <div class="myClass">Element 3</div>
+        <div class="myClass">Element 4</div>
+        <script src="index.js"></script>
+
+        var element = document.querySelector(".myClass");
+        console.log(element.textContent);
+
+        //output: Element 1
+        //returns only first element
+
+        var element = document.querySelectorAll(".myClass");
+        element.forEach(function(element){
+            console.log(element.textContent);
+        });
+
+        //output: Element 1, Element 2, Element 3, Element 4
+        //return all the elements
+
+Q. What are the methods to modify elements properties and attributes ?
+    Answer:
+        These are the methods to modify elements and their properties:
+
+            1. textContent, innerHTML, setAttribute(), removeAttribute(), style.setProperty
+                <div id="myElement">Hello, World!</div>
+
+Q. What is the difference between innerHTML and textContent ?
+    Answer:
+                <div class="myClass">Element 1</div>
+                <div class="myClass">Element 2</div>
+                <div class="myClass">Element 3</div>
+                <div class="myClass">Element 4</div>
+                <script src="index.js"></script>
+
+                var element = document.querySelector(".myClass");
+                element.textContent = <strong>Amir<strong>
+
+                //output: plain text
+
+                var element = document.querySelector(".myClass");
+                element.textContent = <strong>Amir<strong>
+
+                //output: html text
+
+
+Q. How to add and remove properties of HTML elements in the DOM using JS ?
+    Answer:
+        Examples:
+        ----------
+            <div id="myElement">Hello, World</div>
+
+            var element = document.getElementById("myElement");
+
+            //set attribute method is used to add property
+            element.setAttribute("data-info","new value");
+
+            //remove attribute
+            element.removeAttribute("data-info");
+
+Q. How to add and remove style from HTML elements in DOM using JS ?
+    Answer:
+            <div id="myElement">Hello, World!</div>
+
+            var element = document.getElementById("myElement");
+
+            //style.setProperty is used to modify element style
+                element.style.setProperty("color","blue");
+
+            //add the new class to element
+                element.classList.add("highlight")
+                element.classList.remove("highlight")
+                element.classList.toggle("highlight")
+
+Q. How to create new elements in DOM using JS ? What is the difference between createElement() and cloneNode() ?
+    Answer:
+        Example1:
+        ----------------
+            var newDiv = document.createElement("div");
+            newDiv.textContent = "Newly created div";
+            document.body.appendChild(newDiv);
+
+        //output: <div>Newly created div</div>
+
+        Element2:
+        -------------------
+            <div id="parentElement">
+                <h1>Existing Element</h1>
+            </div>
+
+        //cloneNode() - copy the existing element with all attributes
+            var existingElement = document.getElementById("parentElement");
+            var clonedElement = existingElement.cloneNode(true);
+            clonedElement.textContent = "Cloned element";
+            document.body.appendChild(clonedElement);
+
+Q. What is the difference between createElement() and createTextNode() ?
+    Answer:
+        //createElement() - create new element
+            var newDiv = document.createElement("div");
+            newDiv.textContent = "Newly created div";
+            document.body.appendChild(newDiv);
+
+        //output: <div>Newly created div</div>
+
+        <div id="parentElement">
+            <h1>Existing Element</h1>
+        </div>
+
+             var parentElement = document.getElementById("parentElement");
+        //create a new text node
+            var newText = document.createTextNode(" This is some text.");
+        //append the text node to the parent
+            parentElement.appendChild(newText);
+
+             <div id="parentElement">
+                <h1>Existing Element</h1>
+                "This is some text."
+             </div>
+
+
+=========================================== Error Handling =================================================
+
+Q. What is the purpose of the throw statement in JS ?
+    Answer:
+        The throw statement stops the execution of the current function and passes the error to the catch block of calling function.
+
+Q. What is Error propagation in JS ?
+    Answer:
+        Error propagation refers to the process of passing or propagating an error from one part of code to another by using
+        throw statement with try catch.
+
+Q. What are the best practices for error handling ?
+    Answer:
+        1. use try catch and handle error appropriately
+        ------------------------------------------------
+            try{
+                //code that may throw an error
+            }catch(error){
+                //error handling and recovery actions
+            }
+        2. Use descriptive error message
+        -----------------------------------
+            throw new Error("Cannot divide by zero");
+
+        3. Avoid Swallowing Errors
+        ---------------------------
+            try{
+                //code that may throw an error
+            }catch(error){
+                //do not leave the catch blank
+            }
+        4. Log errors
+        ---------------------------
+            try{
+                //code that may throw an error
+            }catch(error){
+                console.error("An error occured:", error);
+                //logs the error with logging library
+            }
+
+--------------------------------------------------------------------------------------------------------
+
+Q. Difference between Arrays and Objects ?
+    Answer:
+        Arrays
+        -----------------------
+            1. Arrays are collection of values.
+            2. Arrays are denoted by square brackets.
+            3. Elements in array are ordered.
+
+            const fruits = ["mango","apple","banana","orange"];
+
+        Objects
+        ------------------------
+            1. Objects are collections of key-value pairs.
+            2. Objects are denoted by curley braces {}.
+            3. Properties in objects are unordered.
+
+            var person = {
+                name: "amir rahi",
+                age: 25,
+                city: "Delhi"
+            }

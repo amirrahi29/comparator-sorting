@@ -1,7 +1,44 @@
 class AbcController{
-    
     public int add(int a, int b){
         return a+b;
     }
-    
+}
+
+@SpringBootTest
+class AbcControllerTest{
+
+    @Autowired
+    private AbcController abcController;
+
+    @Test
+    void add(int a, int b){
+        int result = abcController.add(20,30);
+        assertEquals(50,result);
+    }
+}
+
+
+//api calls
+------------
+
+@SpringBootTest
+class AbcControllerTest{
+
+    @Autowired
+    private MockMVC mockMVC;
+
+    @Autowired
+    private AbcController abcController;
+
+    @Test
+    void hitApi(){
+       User user = new User();
+       user.setId(2L);
+
+       MockIto.when(abcController.hitProductApi(user)).thenReturn(2L);
+       mockMVC.perform(get("getUserId"))
+            .addExpect(status.ok())
+            .addExpect(jsonPath("$.name")).value("Amir")
+
+    }
 }

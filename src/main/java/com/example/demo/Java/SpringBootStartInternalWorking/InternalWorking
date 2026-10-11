@@ -1,0 +1,38 @@
+Complete flow yaad rakho
+-------------------------
+main() → SpringApplication.run() → Environment → ApplicationContext → Component Scan + Auto-Configuration
+→ Bean Creation + Dependency Injection → Embedded Server → Application Ready
+------------------------------------------------------------------------------------------------------------
+
+Step 1. main() method execute hota hai
+    Jab application start karte ho, sabse pehle main() execute hota hai aur SpringApplication.run() call hota hai.
+
+Step 2. @SpringBootApplication process hota hai
+    - @SpringBootConfiguration
+    - @EnableAutoConfiguration
+    - @ComponentScan
+
+Step 3. Environment prepare hota hai
+    Spring Boot application ki configuration read karta hai, jaise:
+        - application.properties ya application.yml
+        - Active profiles, jaise dev, test, prod
+        - Environment variables aur command-line arguments
+    Isse application ki configuration available hoti hai.
+
+Step 4. ApplicationContext create hota hai
+    Spring Boot appropriate IoC container create karta hai.
+    Ye container beans ko manage karega, unki dependencies inject karega aur lifecycle handle karega.
+
+Step 5. @ComponentScan execute hota hai
+    jis jis class pe @component ya stereo annotation hai unko scan krta hai
+
+Step 6. @EnableAutoConfiguration execute hota hai
+    @EnableAutoConfiguration automatically configures suitable Spring components such as DataSource, JPA,
+    caching and web infrastructure based on the dependencies present on the classpath, application properties,
+    existing beans and conditional rules. We can override the default configuration when required.
+
+Step 7. Bean instances create aur dependencies inject hoti hain
+
+Step 8. Embedded server start hota hai
+
+Step 9. Application ready ho jaati hai

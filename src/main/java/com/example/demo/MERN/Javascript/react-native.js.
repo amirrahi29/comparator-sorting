@@ -1,0 +1,58 @@
+//1. Threads
+   1. Main Threads
+   2. Shadow Threads
+   3. JS Threads
+
+//2. Fragment
+     it is used to optimize and remove one div
+
+//3. What is react js?
+//4. Does React Js use Html?
+//5. When was react first release? 2013
+//6. 2 drawbacks of react ? //mvc
+//7. differene b/w real dom and virtual dom?
+//8. what is flux concept in redux?
+//9. define the term redux in react?
+//10. what is the store feature in redux ?
+//11. what is an action in redux?
+//12. what is important features of react ?
+//13. explain the term stateless component ?
+//14. explain react router ?
+//15. what is dispatcher ?
+//16. what is meant by callback functions? what is its purpose?
+//17. explain the term high order component ?
+//18. explain the presentational segment ?
+//19. what are props in react js ?
+//20. explain yeild catchphrase in javascript ?
+//21. name two types of react component ?
+//22. explain synthetic event in react js ?
+//23. what is react state ?
+//24. how can u update state in react js ?
+//25. explain the use of arrow function in react js ?
+//26. state the main differnce b/w pros and state ?
+//27. explain pure component in react js?
+//28. what kind of information controls a segment in react ?
+//29. what is create-react-app ?
+//30. explain the use of key in react list ?
+//31. what are childrens props?
+//32. explain error boundaries ?
+//33. what is the use of empty tags ?
+//34. explain strict mode ?
+//35. what are reacted portals ?
+//36. what is context ?
+//37. what is the use of webpack ?
+//38. what is bevel in react js ?
+//39. how can a browser can read JSX File ?
+//40. what are the major issues of using mvc architecture in react?
+//50. what can be done when where is more than one line of expression ?
+//51. what is the reduction ?
+//52. explain the term synthetic events ?
+//53. when should you use the top-class elements for the function element?
+//54. how can you share an element in the parsing ?
+//55. explain the term reconcillation ?
+//56. how can you re-render a component without using setState() function ?
+//57. can you update props in react ?
+//58. explain the term restructuring ?
+//59. can you update the values of props ?
+//60. explain the meaning of mounting and demounting ?
+//61. what is the use of 'props-types' library?

@@ -1,0 +1,18 @@
+@Lazy: Bean ko tab initialize karna jab uski zaroorat ho.
+----------------------------------------------------------
+    @Component
+    @Lazy
+    class PaymentService {
+        public PaymentService() {
+            System.out.println("PaymentService created");
+        }
+    }
+
+Eager initialization — Default behavior
+----------------------------------------
+    @Component
+    class OrderService {
+        public OrderService() {
+            System.out.println("OrderService created");
+        }
+    }

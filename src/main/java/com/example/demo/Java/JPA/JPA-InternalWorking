@@ -1,0 +1,20 @@
+1. productRepo.save(abcModel)
+    Spring Data JPA ka save() method call hota hai.
+
+2. Repository Proxy
+    Spring Data JPA ka runtime-generated proxy method ko handle karta hai.
+
+3. EntityManager
+    Entity ki state check karke persist() ya merge() use karta hai.
+
+4. Hibernate
+    Entity ko manage karta hai aur required database operation prepare karta hai.
+
+5. Persistence Context
+    Entity ko track karta hai. Changes ko dirty checking se detect kar sakta hai.
+
+6. Flush → JDBC
+    Required SQL, jaise INSERT ya UPDATE, database ko bheja jaata hai.
+
+7. Database
+    SQL execute hota hai; transaction commit hone par changes commit hote hain.

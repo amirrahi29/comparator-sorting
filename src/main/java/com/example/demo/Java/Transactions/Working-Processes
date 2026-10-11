@@ -1,0 +1,65 @@
+Step 1: @EnableTransactionManagement annotate over main class
+
+Step 2: Create @Bean in main class and implement PlatformTransactionManager.
+
+Step 3: write @Transactional over your logic method available inside @service
+
+Step 4: if we are using spring boot then no need to add any external library,
+        it uses (spring-boot-starter-data-jpa), and this is already available in spring boot.
+
+
+Dirt-Read
+==========
+1. Dirty Read — Uncommitted Data Read Karna
+    jab Transaction 1 ka uncommitted data, Transaction 2 read kar leta hai aur baad mein Transaction 1 rollback ho jata hai, use Dirty Read kehte hain.
+
+
+2. Phantom Read — Query Dobara Execute Karne Par Extra Rows Milna
+    Ek transaction same query dobara execute karta hai aur usse matching rows ka set badla hua milta hai.
+
+
+
+
+
+===============================================================================================================
+
+    -> Transaction Attributes in Spring
+    -----------------------------------
+        1. Propagation
+            a. Required
+                -> If any existing transaction will be there then it will join or else this will create new transaction.
+            b. Required New
+                -> If any existing transaction will be there then it will suspend that and it will create new one everytime.
+            c. Mandatory
+                -> if no transaction will be there then it will throw exceptions.
+            d. Nested
+                -> Inside existing transaction, here it create new transaction.
+            e. Supported
+                -> Executes within transaction.
+            f. Not-Supported
+                -> Executes without transactions.
+            g. Never
+                -> If transaction found then it will throw exception.
+        2. Isolation
+            a. READ_UNCOMMITTED
+                -> Allows a transaction to read data that has been modified by other transactions but not yet committed.
+            b. READ_COMMITTED
+                -> Ensures that a transaction reads only committed data. It prevents dirty reads.
+            c. REPEATABLE_READ
+                -> Guarantees that if a transaction reads the same data twice, the data will not change during the transaction.
+            d. SERIALIZABLE
+                -> Highest level of isolation. Ensures that transactions are executed sequentially, as if they were run one after another.
+        3. ReadOnly
+            -> Used when method सिर्फ data read कर रही है
+            -> @Transactional(readOnly = true)
+                ✅ Performance improve
+                ✅ Prevent unnecessary locks
+        4. Time-Out
+            -> Transaction max कितने seconds तक चलेगा
+            -> @Transactional(timeout = 5)
+            -> अगर time exceed हुआ तो rollback होगा
+        5. Rollback
+            -> @Transactional(rollbackFor = Exception.class)
+
+
+========================================================================================================================

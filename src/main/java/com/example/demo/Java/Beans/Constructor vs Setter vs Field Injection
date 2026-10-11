@@ -1,0 +1,7 @@
+Constructor Injection: When dependencies are provided through a class constructor, it is called constructor injection.
+Setter Injection: When dependencies are provided through setter methods, it is called setter injection.
+Field Injection: When dependencies are injected directly into class fields, it is called field injection.
+
+
+Constructor injection is preferred because it supports immutability through final fields, ensures mandatory dependencies are provided,
+and makes unit testing easier.

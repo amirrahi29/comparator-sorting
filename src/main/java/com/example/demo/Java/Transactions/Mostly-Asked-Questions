@@ -1,0 +1,39 @@
+1. @Transactional internally kaise work karta hai?
+        Answer: Spring AOP proxy ke through method call intercept karta hai. Transaction manager transaction start ya join karta hai.
+                Method successful ho to commit aur applicable exception par rollback hota hai.
+
+2. User save ho gaya, lekin payment save karte waqt exception aa gayi. Kya hoga?
+        Answer: Agar dono operations same transaction mein hain aur RuntimeException aati hai, to default behavior mein dono
+                database changes rollback ho jaayenge.
+
+3. RuntimeException aur checked exception par rollback ka kya difference hai?
+        Answer: By default RuntimeException aur Error par rollback hota hai. Checked exceptions, jaise IOException, par default rollback nahi hota.
+                `rollbackFor = Exception.class` se rule customize kar sakte hain.
+
+4. Ek @Transactional method same class ke doosre @Transactional method ko call kare to kya hoga?
+        Answer: Default proxy-based mode mein self-invocation proxy ko bypass karti hai. Isliye called method ka transactional
+                annotation independently apply nahi hota; outer transaction phir bhi active ho sakta hai.
+
+5. Propagation.REQUIRED aur REQUIRES_NEW mein kya difference hai?
+        Answer: REQUIRED existing transaction join karta hai, ya naya start karta hai. REQUIRES_NEW existing transaction ko suspend karke
+                independent naya transaction start karta hai.
+
+6. @Transactional(readOnly = true) kya karta hai?
+        Answer: Ye transaction ko read-only intent ke saath configure karta hai. JPA provider ya database optimizations kar sakte hain,
+                lekin har case mein writes ko hard-block karne ki guarantee nahi hai.
+
+7. Isolation levels kya hote hain?
+        Answer: Isolation concurrent transactions ke beech visibility aur interference control karta hai. Common levels READ_UNCOMMITTED,
+                READ_COMMITTED, REPEATABLE_READ aur SERIALIZABLE hain; support database par depend karta hai.
+
+8. Agar user aur payment alag databases mein save hote hain, kya ek @Transactional dono ko rollback karega?
+        Answer: Normal single transaction manager se nahi. Multiple databases ko atomic transaction mein coordinate karne ke liye
+                suitable distributed transaction/JTA setup ya Saga jaise design ki zaroorat ho sakti hai.
+
+9. Payment gateway par payment successful hui, lekin database transaction rollback ho gaya. Kya gateway payment bhi rollback hogi?
+        Answer: Nahi. External API ka side effect database rollback se undo nahi hota. Iske liye compensation/refund,
+                idempotency aur suitable transaction workflow design karna padta hai.
+
+10. @Transactional private method par lagane se kya hoga?
+        Answer: Default proxy-based Spring transaction management mein private method ko proxy ke through intercept nahi kiya ja sakta,
+                isliye annotation expected transaction behavior apply nahi karega.

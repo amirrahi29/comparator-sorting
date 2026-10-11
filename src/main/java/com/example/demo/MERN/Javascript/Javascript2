@@ -1,0 +1,430 @@
+1. What is undefined?
+
+        let a;
+        console.log(a);
+
+    Answer:
+        ✅ Output: undefined
+        👉 Variable declared but no value assigned.
+
+2. What is null?
+
+        let b = null;
+        console.log(b);
+
+    Answer:
+        ✅ Output: null
+        👉 Null means intentional empty value.
+
+3. typeof undefined?
+
+        console.log(typeof undefined);
+    Answer:
+        ✅ Output: "undefined"
+
+4. typeof null?
+        console.log(typeof null);
+    Answer:
+        ✅ Output: "object" 😱 (JavaScript bug)
+        Interview question बहुत famous है.
+
+5. null == undefined ?
+        console.log(null == undefined);
+    Answer:
+        ✅ Output: true
+        Because loose equality checks only value.
+
+6. console.log(null === undefined);
+    Answer:
+        console.log(null === undefined);
+        ✅ Output: false
+        Because types are different.
+
+7. What is NaN?
+        console.log("abc" / 2);
+    Answer:
+        ✅ Output: NaN
+
+8. typeof NaN?
+        console.log(typeof NaN);
+    Answer:
+        ✅ Output: "number" 😱
+        Even though NaN means Not a Number, type is still number.
+
+9. NaN == NaN ?
+        console.log(NaN == NaN);
+    Answer:
+        ✅ Output: false
+        Because NaN is never equal to itself.
+
+10. How to check NaN properly?
+        console.log(isNaN("abc"));
+    Answer:
+        ✅ true
+
+11. Output?
+        console.log(undefined + 1);
+    Answer:
+        Output: NaN
+        Because undefined becomes NaN in math.
+
+12. Output?
+        console.log(null + 1);
+    Answer:
+        ✅ Output: 1
+        Because null becomes 0 in math.
+
+13. Output?
+        console.log(null == 0);
+    Answer:
+        ✅ Output: false
+        Special case.
+
+14. Output?
+        console.log(null >= 0);
+    Answer:
+        ✅ Output: true
+        Because comparison converts null → 0.
+
+15. Output?
+        console.log(undefined == 0);
+    Answer:
+        Output: false
+
+16. Output?
+        console.log(undefined > 0);
+        console.log(undefined < 0);
+    Answer:
+        false
+        false
+
+17. Output?
+        console.log(Boolean(null));
+        console.log(Boolean(undefined));
+        console.log(Boolean(NaN));
+    Answer:
+        false
+        false
+        false
+
+18. Output?
+        console.log([] == false);
+    Answer:
+        ✅ Output: true
+        Because:
+        [] converts to ""
+        "" converts to 0
+        false converts to 0
+
+19. Output?
+        console.log([] == []);
+    Answer:
+        ✅ Output: false
+        Because arrays compare by reference.
+
+20. Output?
+        console.log({} == {});
+    Answer:
+        ✅ Output: false
+        Objects are compared by reference.
+
+21. Output?
+        console.log("5" - 1);
+    Answer:
+        ✅ Output: 4
+        String converts to number.
+
+22. Output?
+        console.log("5" + 1);
+    Answer:
+        ✅ Output: "51"
+        Because + does string concatenation.
+
+23. Output?
+        console.log(true + 1);
+    Answer:
+        ✅ Output: 2
+        true becomes 1.
+
+24. Output?
+        console.log(false + 5);
+    Answer:
+        ✅ Output: 5
+        false becomes 0.
+
+25. Output?
+        console.log(0 == false);
+        console.log(0 === false);
+    Answer:
+        true
+        false
+
+26. Output?
+        console.log("" == false);
+    Answer:
+        ✅ Output: true
+        Both become 0.
+
+27. Output?
+        console.log(" " == false);
+    Answer:
+        ✅ Output: true
+        Space becomes empty string → 0.
+
+28. Output?
+        console.log(1 == "1");
+        console.log(1 === "1");
+    Answer:
+        true
+        false
+
+29. Output?
+        console.log(typeof NaN === "number");
+    Answer:
+        ✅ Output: true
+
+30. Output?
+        console.log(null === null);
+        console.log(undefined === undefined);
+    Answer:
+        true
+        true
+
+============================== MOST ADVANCED JavaScript Logical Questions (Senior Level) ===============================
+
+1. NaN Trick
+        console.log(NaN === NaN);
+    Answer:
+        ✅ Output: false
+        👉 NaN कभी भी खुद के बराबर नहीं होता।
+
+2. Best NaN Check
+        console.log(Number.isNaN("hello"));
+        console.log(isNaN("hello"));
+    Answer:
+        false
+        true
+
+3. null vs undefined comparison
+        console.log(null == undefined);
+        console.log(null === undefined);
+    Answer:
+        true
+        false
+
+4. null special case
+        console.log(null == 0);
+        console.log(null >= 0);
+        console.log(null > 0);
+    Answer:
+        false
+        true
+        false
+
+5. undefined weird comparison
+        console.log(undefined == 0);
+        console.log(undefined > 0);
+        console.log(undefined < 0);
+    Answer:
+        false
+        false
+        false
+
+6. Array equality
+        console.log([] == []);
+    Answer:
+        ✅ Output: false
+        👉 Reference अलग होता है।
+
+7. Array + Boolean
+        console.log([] == false);
+        console.log([] == true);
+    Answer:
+        true
+        false
+
+8. Empty array + Empty string
+        console.log([] + []);
+    Answer:
+        ✅ Output: ""
+        Because both convert to empty string.
+
+9. Object + Object
+        console.log({} + {});
+    Answer:
+        ✅ Output: "[object Object][object Object]"
+
+10. typeof strange outputs
+        console.log(typeof NaN);
+        console.log(typeof null);
+        console.log(typeof []);
+        console.log(typeof {});
+    Answer:
+        number
+        object
+        object
+        object
+
+11. Truthy/Falsy advanced
+        console.log(Boolean([]));
+        console.log(Boolean({}));
+        console.log(Boolean(""));
+        console.log(Boolean(0));
+    Answer:
+        true
+        true
+        false
+        false
+
+12. Function Hoisting
+        greet();
+
+        function greet() {
+          console.log("Hello");
+        }
+    Answer:
+        ✅ Output: "Hello"
+        👉 Function declarations are hoisted.
+
+13. Function Expression Hoisting
+        sayHi();
+
+        var sayHi = function () {
+          console.log("Hi");
+        };
+    Answer:
+        ✅ Output:
+        ❌ Error: sayHi is not a function
+        Because variable hoisted as undefined.
+
+14. let vs var hoisting
+        console.log(a);
+        var a = 10;
+
+        console.log(b);
+        let b = 20;
+    Answer:
+        undefined
+        ReferenceError
+
+15. Closure Output
+        function outer() {
+          let x = 10;
+          return function inner() {
+            console.log(x);
+          };
+        }
+
+        const fn = outer();
+        fn();
+    Answer:
+        ✅ Output: 10
+        👉 Inner remembers outer variable.
+
+16. Loop Closure Issue (Very Famous)
+        for (var i = 0; i < 3; i++) {
+          setTimeout(() => console.log(i), 1000);
+        }
+    Answer:
+        3
+        3
+        3
+
+17. Event Loop Trick (Promise vs setTimeout)
+        console.log("Start");
+        setTimeout(() => console.log("Timeout"), 0);
+        Promise.resolve().then(() => console.log("Promise"));
+        console.log("End");
+    Answer:
+        Start
+        End
+        Promise
+        Timeout
+
+18. Async/Await Output
+        async function test() {
+          console.log(1);
+          await Promise.resolve();
+          console.log(2);
+        }
+        console.log(3);
+        test();
+        console.log(4);
+    Answer:
+        3
+        1
+        4
+        2
+
+19. this keyword tricky
+        const obj = {
+          name: "Amir",
+          normal() {
+            console.log(this.name);
+          },
+          arrow: () => {
+            console.log(this.name);
+          }
+        };
+
+        obj.normal();
+        obj.arrow();
+    Answer:
+        Amir
+        undefined
+
+20. bind/call/apply
+        function greet() {
+          console.log(this.name);
+        }
+
+        const user = { name: "Amir" };
+
+        greet.call(user);
+    Answer:
+        ✅ Output: Amir
+
+21. Object mutation
+        const person = { name: "A" };
+        const p2 = person;
+        p2.name = "B";
+        console.log(person.name);
+    Answer:
+        ✅ Output: "B"
+        Both refer same object.
+
+22. Spread copy
+        const obj1 = { a: 1 };
+        const obj2 = { ...obj1 };
+        obj2.a = 5;
+        console.log(obj1.a);
+    Answer:
+        ✅ Output: 1
+        Spread makes shallow copy.
+
+23. Deep copy fail
+        const a = { x: { y: 1 } };
+        const b = { ...a };
+        b.x.y = 99;
+        console.log(a.x.y);
+    Answer:
+        ✅ Output: 99
+        Because spread is shallow.
+
+24. Map vs Object key
+        const map = new Map();
+        map["a"] = 1;
+        map.set("b", 2);
+        console.log(map["a"]);
+        console.log(map.get("b"));
+    Answer:
+        1
+        2
+    But map["a"] is not real map storage.
+
+25. Delete operator trick
+        let x = 10;
+        console.log(delete x);
+    Answer:
+        ✅ Output: false
+        delete works only on object properties.

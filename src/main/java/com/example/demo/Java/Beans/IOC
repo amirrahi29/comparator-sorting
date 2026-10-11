@@ -1,0 +1,6 @@
+
+IOC: Inversion of control is used to hold the object and it also manages the lifecycle of bean
+
+--------------------------
+IoC (Inversion of Control): It is a principle in which the Spring IoC Container manages object creation,
+maintains bean instances, injects dependencies, and manages the bean lifecycle.

@@ -1,0 +1,35 @@
+@Conditional: Used to register a bean only when a specific condition is satisfied.
+
+    @Configuration
+    class AppConfig {
+
+        @Bean
+        @Conditional(WindowsCondition.class)
+        public MyService myService() {
+            return new MyService();
+        }
+    }
+
+    @Bean
+    @ConditionalOnProperty(
+        name = "payment.enabled",
+        havingValue = "true"
+    )
+    PaymentService paymentService() {
+        return new PaymentService();
+    }
+
+
+@Profile: Used to activate beans or configurations for specific environments, such as dev, test, staging and prod.
+
+    @Configuration
+    @Profile("dev")
+    class DevConfig {
+        // Development configuration
+    }
+
+    @Configuration
+    @Profile("prod")
+    class DevConfig {
+        // Development configuration
+    }

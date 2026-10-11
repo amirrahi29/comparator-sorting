@@ -1,0 +1,85 @@
+
+To track logs in our application, we use splunk.
+
+    Benefits of using splunk
+    -----------------------------
+        1. Offers enhanced GUI and real-time visibility in a dashboard.
+        2. It reduces troubleshooting and resolving time by offering instant results.
+        3. It is the best suited-tool for root cause analysis.
+        4. Splunk allows you to generate graphs, alerts, and dashboards.
+        5. You can easily search and investigate specific results using splunk.
+        6. It allows you to troubleshoot any condition of failure for improved performance.
+
+To use splunk
+
+    ->  download splunk from splunk.com by adding some general personal details. and then install and open.
+    ->  On splunk dashboard, on top right toggle menu,
+    ->  click on setting option -> Data Inputs -> HTTP event collector
+    ->  In Http event collector page, click on newToken btn, and the create token page will be visible.
+    ->  then here, provide token name, sourceName, description, and check enable indexer acknowledgement checkbox.
+    ->  now create index on same page next step (if we have multiple env's then we can create multiple indexes for all respective env's)
+    ->  and after creating index, choose that index then select source type (source type is our logging tools that we are going to use like log4j)
+    ->  inside same page in third step, we can review all the details which we feeded.
+    ->  then w will get many thing on review step like, name, source name override, sourceType, index. (with these all info we will create xml file
+        into our spring boot application).
+    ->  then after review submit that generate token form. and we will get msg "Token has been created successfully,"
+
+        Create spring boot CRUD project
+        ===============================
+
+    ->  if we are using log4j, then exclude spring boot by default starter logging. by adding exclusion dependency inside pom.xml file.
+    ->  add log4j2 dependency.
+    ->  add logs inside your business logic, which we want to track.
+    ->  create xml file inside resources folder of our spring bot CRUD app,
+    ->  on dashboard click on search and reporting option,
+    ->  search logs on search box by providing index-name and then you will get all logs
+
+        -----------------------------------------------------------------
+        index="spring_dev", also we can set time like 5 mins, 30 mins etc
+        -----------------------------------------------------------------
+
+
+                XML file code
+                =============
+
+                <?xml version="1.0" encoding="UTF-8"?>
+                <Configuration>
+                    <Appenders>
+                        <Console name="console" target="SYSTEM_OUT">
+                            <PatternLayout
+                                    pattern="%style{%d{ISO8601}} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{10}}{bright,yellow}: %msg%n%throwable" />
+                        </Console>
+                        <SplunkHttp
+                                name="splunk-http"
+                                url="http://localhost:8088"
+                                token="55264696-1a4d-4e39-a9dd-642272a08f0d"
+                                host="localhost"
+                                index="spring_dev"
+                                type="raw"
+                                source="source name"
+                                source-type="log4j"
+                                messageFormat="text"
+                                disableCertificateValidation="true">
+                            <PatternLayout pattern="%m" />
+                        </SplunkHttp>
+
+                    </Appenders>
+
+                    <Loggers>
+                        <Root level="info">
+                            <AppenderRef ref="console" />
+                            <AppenderRef ref="splunkhttp" />
+                        </Root>
+                    </Loggers>
+                </Configuration>
+
+
+
+======================================== Splunk Alerting ============================================
+
+    setting -> server setting -> in server setting page -> click on email settings
+        -> the provide host, username, password, domains, etc. then click save btn
+        -> add custom condition like suppose any api failing and we want alert on email then this status we can set as condition.
+        -> on dashboard, suppose we searched a log then right top we will get save as btn and click on alert then alert model will open.
+           inside that we have to set condition, suppose if any error then we want alert on email.
+        -> alert option is also there on dashboard, where we can check how many alerts we have created

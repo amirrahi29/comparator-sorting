@@ -1,0 +1,1058 @@
+Q1. What is nodejs ?
+    Answer:
+        -> Node is neither a language nor a framework.
+        -> Node/Node.js a runtime environment for executing Javascript code on the server side.
+
+Q2. How Node is a runtime environment on server side ? What is V8 ?
+    Answer:
+        -> Browsers execute Javascript on the cleint side, and similarly Node js exectues Javascript on Server Side.
+        -> V8 is a Javascript engine for the Javascript language.
+
+Q3. What is the difference between Runtime Environment & Framework ?
+    Answer:
+        Run Time Environment:
+        Primarly focuses on providing the necessary infrastructure for code execution, including services like memory management
+        and I/O operations.
+
+        Framework:
+        Primarly focuses on simplifying the development process by offering a structured set of tools, libraries and best practices.
+
+Q4. What is the difference between Node.js and Express.js ?
+    Answer:
+        Node js:
+            Node js is a runtime environment that allows the execution of Javascript code server-side.
+        Express js:
+            Express js is a framework build on the top Node js.
+            -> It is designed to simplify the process of building web applications and APIs by providing set of features
+               like simple routing system, middleware supprt etc.
+
+Q5. What are the differences between Client-Side(Browser) & Server-Side(Node Js) ?
+    Answer:
+        Client Side (Browser):
+            -> Runs on the web broswer
+            -> HTML,CSS,Javascript (Primary languages)
+            -> Document/Window/Navigator/Event Objects are available.
+            -> Request/Response/Server/Database Object are not available.
+            -> Handles UI display, interactions and Client-Side logic.
+
+        Server Side (Node js):
+            -> Runs on the server
+            -> Javascript (Primary language)
+            -> Document/Window/Navigator/Event Objects are not available.
+            -> Request/Response/Server/Database Objects are available.
+            -> Handles business logic, data storage/access, authentication, authorization etc.
+
+Q6. What are 7 main features of Node.js ?
+    Answer:
+        1. Single Threaded
+            Task executes one by one in a queue. it executes in a sequesntial way. suppose one task is running than others threads will wait untill the current task completed.
+        2. Synchronous
+            Synchronous is a blocking approach, because if the current task executing then other tasks will be block untill the current task completed.
+        3. Asynchronous
+            Task executes parallely, and in non-sequential way. and also we will not get deadlock type issues.
+                a. Single threaded
+                b. Non-Blocking
+                c. Event Driven Architecture
+        4. Event-Driven
+        5. V8 Javascript Engine
+        6. Cross Platform
+        7. NPM (Node Package Manager)
+        8. Real-Time Capabilites
+
+Q7. What is multi Threaded Programming ?
+    Answer:
+        Here Threads executes in a parallel way and in a non-sequestial way. it will not block any thread task execution.
+        Very hectic to handle multiple operations. also get deadlock problem.
+
+Q8. What is the difference between Synchronous and Asynchronous programming ?
+    Answer:
+        Synchronous programming:
+            1. Task are executed one after anathor in a sequential manner.
+            2. Each task must complete before the program moves on to the next task.
+            3. Execution of code is blocked until a task finished.
+            4. Synchronous operations can lead to blocking and unresponsiveness.
+
+        Asynchronous programming:
+            1. Task are executed in parallel and in a non-sequential way.
+            2. Task can be executed independently of each other.
+            3. Asynchronous operations are typically non-blocking.
+            4. It enables better concurrency and responsiveness.
+
+Q9. What are Events, Event Emitter, Event Queue, Event Loop & Event Driven ?
+    Answer:
+        Events:
+            Any action happens. (koi action hua hai) - Any action
+                -> Signals that something has happened in a program.
+        Event Emitter:
+            Action happen source. (Jaha se event happen hua hai usko event emitter bolte hai).
+            The place where event generated.
+                -> Create or emit events.
+        Event Queue:
+            Saare events queue me add hote jate hai, usi ko event queue bolte hai.
+            (As we know that all event add one by one into a queue that queue is called event queue)
+                -> Events emitted queued (Stored) in event queue.
+        Event Handler:
+            Node libraries pick events one by one then there code will manage by event handler and also called event listener.
+                -> Functions that responds to specific events.
+        Event Loop:
+            Here it pick the loop one by one from event queue and send to the event handler to manage codes again and again
+            and this loop is called event loop.
+                -> The event loop picks up event from the event queue and executes them in the order they were added.
+                -> Event loop pick events from event queue and it is also responsible to executes events in order way.
+        Event Driven Architecture:
+                -> It means operations in Node are drive or based by events.
+
+Q10. What are the main features & advantages of Node.js ?
+    Answer:
+        Features:
+            1. Asynchronous
+            2. V8 Js Engine
+            3. Event-Driven Architecture
+            4. Cross-Platform
+            5. Javascript
+        Advantages
+            -> (Asynchronous): Enable handling multiple concurrent requests & non-blocking execution of thread
+            -> (V8 Js Engine): Build on the V8 JS engine from Google Chrome, Node Js executes code faster.
+            -> (Event Driven Architecture): Efficient handling events, Great for real time application like chat
+                applications, gaming applications (using Web Sockets) where bidirectional communication is required.
+            -> (Cross Platform): Supports deployment on various operating systems, enhancing flexibility.
+            -> (Javascript): Coding in JS language therefore no need to learn a new language.
+            -> Suitable for building scalable application that can handle increased loads.
+
+Q11. What are the disadvantages of node ? When to use and when not to use Node ?
+    Answer:
+        When to use Node Js:
+            -> Ideal for real time applications like chat applications, online gaming, and colloborative tools due to its
+               event-driven architecture.
+            -> Excellent for building lightweight and scalable RESTFUL APIs that handle a large number of concurrent connections.
+            -> Well-Suited for building micro-services based architectures, enabling modular and scalable systems.
+
+        When not to use Node JS:
+            -> CPU Intensive tasks :
+                Avoid for applications that involve heavy CPU processing (Image/Video Processing, Data Encryption/Dcryption)
+                As Node.js may not provide optimal performance in such scenerios because it is single threaded and for heavy computation multi-threaded is better.
+
+Q12. What is NPM? What is the role of node_modules folder ?
+    Answer:
+        NPM (Node Package Manager):
+            is used to manage the dependencies for your Node Project.
+        node_modules:
+            node_modules folder contains all the dependencies of the node project.
+
+Q13. What is the role of package.json file in Node ?
+    Answer:
+        The package.json file contains project metadata (information about the project). For example, project name, version, desciption, author, license etc.
+
+Q14. What are Modules ? What is the difference between function and Module ?
+    Answer:
+        -> Modules ke andar 1 ya usse v adhik function and variables ho sakte hai.
+        -> A module can contain a specific functionality that can be easily reused within a Node.js application.
+        -> Ideally in Node.js, javascript file can be treated as module.
+            myModule.js
+            function sayHello(name){
+                console.log("Hello "+name);
+            }
+            module.exports = sayHello;
+        -> A module is a broader concept that encapsulates functionality, while a function is a specific set of
+           instructions within that module.
+        -> Modules can contain multiple functions and variables.
+
+Q15. How many ways are there to Export a module ?
+    Answer:
+
+        1st Way
+        --------------------------------
+        // exporting a function
+            function sayHello(name){
+                console.log("Hello "+name);
+            }
+        // exporting a variable
+            const pi = 3.1415
+        //exporting an object
+            const myObject = {
+                key: "value",
+            }
+
+        // using module.exports
+        module.exports.sayHello = sayHello;
+        module.exports.pi = pi;
+        module.exports.myObject = myObject;
+
+        2nd way
+        -------------------------------------------
+         // exporting a function
+            exports.sayHello(name){
+                console.log("Hello "+name);
+            }
+        // exporting a variable
+            exports.pi = 3.1415
+        //exporting an object
+            exports.myObject = {
+                key: "value",
+            }
+
+Q16. What will happen if you dont export the module ?
+    Answer:
+        Then module will not be accessible outside.
+
+Q17. How do import single and multiple functions from a module ?
+    Answer:
+        1st way
+        ----------------------------
+        const module2 = require('../module2');
+
+        2nd way
+        ----------------------------
+        module2('Happy');
+
+        3rd way
+        -----------------------------
+        module2.sayHello('Happy');
+        module2.sayHello('Sad');
+
+        NOTE: Happy and sad are the functions name present inside module2
+
+Q18. What is module wrapper function ?
+    Answer:
+        -> In Node.js, each module is wrapped in a function called the "module wrapper function" before it is executed.
+
+        const message = "Happy Coding";
+        console.log(message);
+
+        //output: Happy Coding
+
+        NOTE: Converted or wrapped by fucntion internally
+
+        (function(exports,require,module,__filename,__dirname){
+            const message = "Happy Coding";
+            console.log(message);
+        });
+
+Q19. What are the types of modules in Node?
+    Answer:
+        1. Built in Module (Core Modules)
+            These are already present modules in Node js which provide essential functionalities.
+            For example: fs module(file system module), http(Http server), path(path manipulation) and util(utilities).
+        2. Local Module
+            These user-defined modules (JS files) created by developers for specific functionalities.
+        3. Third party module
+            These are external packages or libraries created by the community and provide additional functionalities for Node projects. You install third party modules using the npm install command.
+            For example , npm install loadash
+
+Q20. What are the top 5 built in modules commonly used in node projects ?
+    1. fs
+    2. path
+    3. OS
+    4. events
+    5. http
+
+Q21. Explain the role of fs module ? Name some functions of it ?
+    Answer:
+
+        -> fs (File System) module is Node provides a set of methods for interacting with the file system.
+
+        -> Some methods name:
+            1. fs.readFile(): Reads the content of the file specified.
+            2. fs.writeFile(): Writes the content of the file specified.
+            3. fs.appendFile(): Append data to a file does not exist, it is created.
+            4. fs.unlink(): Deletes the specified file.
+            5. fs.readDir(): Reads the content of a directory.
+            6. fs.mkdir(): Creates a new directory.
+            7. fs.rmdir(): Removes the specified directory.
+
+        const fs = require = ("fs);
+
+        //read the content of the file asynchronously
+        fs.readFile("fs.txt","utf8",(err,data)=>{
+            if(err){
+                return;
+            }
+            console.log("File contents: ",data);
+        });
+        //write the content of the file asynchronously
+        const contentToWrite = "Happy Coding";
+        fs.writeFile("fs.txt",contentToWrite,"utf8",(err)=>{
+            if(err){
+                return;
+            }
+            console.log("Write opration complete.");
+        });
+
+Q22. Explain the role of path module? Name some functions of it ?
+    Answer:
+
+        ->  Path module provides utilities for joining, resolving, parsing, formatting, normalizing, and manipulating path.
+
+                const path = requrie('path');
+
+                //joining paths segments together
+                const fullPath = path.join(__dirname, "file.txt");
+
+                //resolving the absolute path
+                const fullPath = path.resolve(__dirname, "file.txt");
+
+                //getting the directory name of a path
+                const fullPath = path.dirname(/folder/file.txt);
+
+                //getting the file extension of a path
+                const fullPath = path.extname('/folder/file.txt');
+
+                //parsing a path into an object with its components
+                const fullPath = path.parse("/folder/file.txt");
+
+Q23. Explain the role of OS module ? Name some functions of it?
+    Answer:
+        -> The os module is Node.js provides a set of methods for interacting with the operating systems.
+        -> Operating system can be used by developers for building cross-platform applications or performing system-related
+           tasks in Node.js applications.
+
+        const os = require('os');
+
+        //fetch platform information
+        console.log(os.type());
+        //output: 'Window NT' or 'Linux' etc.
+
+        //fetch OS user information
+        console.log(os.userInfo());
+        //output: {uid: -1, grid: -1, username: 'anyName'...}
+
+        //Get memory information in bytes
+        console.log(os.totalmem()); // Output: 185484594594
+        console.log(os.freemem()); // Output: 153876292
+
+Q24. Explain the role of events module ? How to handle events in Node ?
+    Answer:
+        const eventEmitter = require("events");
+
+        //create an instance of eventEmitter class
+        const myEmitter = new EventEmitter();
+
+        //register an event listener (event name)
+        myEmitter.on('eventName',()=>{
+            console.log("Events occured");
+        });
+
+        //emit the event
+        myEmitter.emit('eventName');
+
+        //output: Events occured
+
+
+Q25. What are Event Arguments ?
+    Answer:
+
+        -> Event arguments refers to the additional information or data that can be passed along with an emitted event.
+
+        const EventEmitter = require('events');
+
+        //create an instance of EventEmitter class
+        const myEmitter = new EventEmitter();
+
+        //register an event with arguments
+        myEmitter.on("eventName",(arg1,arg2)=>{
+            console.log("Events occured with arguments:",arg1,arg2);
+        });
+        //emit an event with arguments
+        myEmitter.emit("eventName","Arg 1","Arg2");
+
+        //output: Events occured with arguments:Arg1 Arg2
+
+Q26. What is the difference between a function and an event ?
+    Answer:
+        Function:
+            A function is a reusable piece of code that performs a specific task when invoked or called.
+        Events:
+            Events represents actions that can be observed and responded to. Events will call functions internally.
+
+Q27. What is the role of http module in node ?
+    Answer:
+        The HTTP module can create an HTTP server that listens to server ports and gives a response back to the client.
+
+Q28. What is the role of createserver() method of http module ?
+    Answer:
+        The createServer() method of http module in Node.js is used to create an Http server.
+
+        const http = require('http');
+
+        //create http server
+        const server = http.createServer((req,res)=>{
+            res.send('Hello World');
+        });
+
+        const port = 3000;
+        server.listen(port,()=>{
+            console.log(`Server is listening on port: ${port}`);
+        });
+
+
+
+
+                                          EXPRESS
+        --------------------------------------------------------------------------------
+
+
+Q29. What are the advantages of using Express.js with Node.js ?
+    Answer:
+        1. Simplified web development
+            Express.js provides a lightweight framework that simplifies the process of building web applications in Node.js
+        2. Middleware support
+            Easy integration of middleware functions into applications request-response cycle.
+        3. Flexible routing system
+            Defining routes for handling different HTTP methods (GET,POST,PUT,DELETE etc.) and URL patterns is easy.
+        4. Template engine intergration
+            Express.js supports various template engines make it easy to generate dynamic HTMLcontent on the server side.
+
+Q30. How to create HTTP server using Express.js ?
+    Answer:
+        const express = require('express');
+        const app = express();
+
+        const port = 3000;
+        app.listen(port,()=>{
+            console.log(`Server is running on port: ${port}`);
+        });
+
+
+        ------------------------------------------------Middleware--------------------------------------------
+
+Q31. What is middleware in Express.js and when to use them ?
+    Answer:
+        A middleware in Express.js is a function that handles HTTP requests, performs operations, and passes control to the next middleware.
+
+Q32. How do you implement middleware in Express.js?
+    Answer:
+        const express = require('express');
+        const app = express();
+
+        //define middleware function
+        const myMiddleware = (req,res,next)=>{
+            res.send("Happy Coding");
+            next();
+        }
+
+        // use middleware for globally for all routes
+        app.use(myMiddleware);
+
+Q33. What is the purpose of app.use() in Express.js ?
+    Answer:
+        The app.use() is generally used to define middleware functions globally.
+
+Q34. What is the purpose of next parameter in Express.js ?
+    Answer:
+        next(); method is use to execute next middleware. if will not use then it will not execute to next middleware.
+
+Q35. How to use middleware globally for a specific route ?
+    Answer:
+        const express = require('express');
+        const app = express();
+
+        //define middleware function
+        const myMiddleware = (req,res,next)=>{
+            res.send("Happy Coding");
+            next();
+        }
+
+        // use middleware for globally for one routes
+        app.use('example',myMiddleware);
+
+Q36. What is Request Pipeline in Express.js ?
+    Answer:
+        The request pipeline in Express.js is a series of middleware functions that handle incoming HTTP requests and pass control to the next function.
+
+
+---------------------------------------------types of middlewares-------------------------------------------
+
+Q37. What are the types of middlewares in express.js ?
+    Answer:
+        1. Application-level middleware.
+        2. Router level middleware.
+        3. Error handling middleware.
+        4. Built in middleware.
+        5. Third party middleware.
+
+Q38. What is the difference between Application level and Route level middleware ?
+    Answer:
+           Application level middleware
+           ------------------------------
+                const express = require('express');
+                const app = express();
+
+                //define middleware function
+                const myMiddleware = (req,res,next)=>{
+                    res.send("Happy Coding");
+                    next();
+                }
+                // use middleware for globally for all routes
+                app.use(myMiddleware);
+
+            Route level middleware
+            ------------------------------
+                const express = require('express');
+                const app = express();
+
+                //define middleware function
+                const myMiddleware = (req,res,next)=>{
+                    res.send("Happy Coding");
+                    next();
+                }
+                // use middleware for globally for all routes
+                app.use("/example",myMiddleware);
+
+Q39. What is error handling middleware and how to implement it ?
+    Answer:
+        Application level middleware
+        ------------------------------
+            const express = require('express');
+            const app = express();
+
+            //define middleware function
+            const myMiddleware = (req,res,next)=>{
+                next(new Error("Happy Coding"));
+            }
+
+
+            app.use(myMiddleware);
+            app.use(myMiddleware);
+            app.use(myMiddleware);
+
+              const myMiddleware = (err,req,res,next)=>{
+               console.error(err.stack);
+               res.status(500).send("Something went wrong!");
+            }
+
+            //output: Something went wring!
+
+            NOTE:
+            -------------------
+            first wala middleware agar error throw karta hai to dusra wala middleware error ko as a
+            parameter handle karta hai aur error.stack se use handle kr leta hai, agar bhut saare middlewares hai to last wale me error handle hoga.
+
+Q40. What is built in middleware? How to serve static files from Express.js >
+    Answer:
+
+        ->express.static() middleware is used for serving static files.
+
+        const express = require('express');
+        const app = express();
+
+        //serve static files from the 'public' directory
+        app.use(express.static("public")); //build in middleware
+
+Q41. What are third-party middleware's ? Give some example ?
+    Answer:
+
+        -> Third party middleware in Express.js are modules developed by third-party developers (not part of the core Express.js)
+        -> Third party middleware's provide functionalities like logging, security, body parsing, and compression.
+        -> Example of third party middleware's morgan, helmet, body-parser, compression etc.
+
+        //third party middlewares
+        // npm install helmet, body-parser, compression
+
+        const express = require('express');
+        const helmet = require('helmet');
+        const bodyParser = require('body-parser');
+        const compression = require('compression');
+
+        const app = express();
+
+        //use the helmet middleware for setting HTTP security headers
+        app.use(helmet());
+
+        //use the body-parser middleware for parsing request bodies
+        app.use(bodyParser.json());
+        app.use(bodyParser.urlencoded({ extended: true }));
+
+        //use the compression middleware for compressing HTTP responses
+        app.use(compression());
+
+Q42. Can you summarize all the types of middleware ?
+    Answer:
+        1. Application level middleware:
+            Middleware applied to all routes, commonly used for logging, authentication etc.
+        2. Router-level middleware
+            Middleware specific to certain routes
+        3. Built-in middleware
+            Pre-packaged middleware included with Express.js, like for serving static files.
+        4. Error-handling middleware
+            Middleware for handling error; declared after other middleware, triggered on errors.
+        5. Third-party middleware
+            Middleware developed by others, not part of Express.js core; adds various functionalities.
+
+Q43. What are the advantages of using middleware in Express.js ?
+    Answer:
+        1. Modularity
+            Middleware allows you to modularize your applications functionality into smaller, self contained units. Each middleware function can handle specific task or concern such as logging, authentication, or error handling.
+        2. Reusability
+            Middlewares can be reused at multiple places and that makes application code easier to maintain.
+        3. Improve request handling
+            Middleware functions have access to both the request (req) and response (res) objects which enables you to perform validations on request or modify the response before sending it back to the client.
+        4. Flexible control flow
+            Middleware functions can be applied globally to all routes or selectively to specific routes, allowing you to control the flow of request processing in your application.
+        5. Third-party middlewares
+            Express.js offers a wide range of third-party middleware packages that provide additional functionality. for eg: body-parser, cors etc.
+
+
+                                                        Routing
+----------------------------------------------------------------------------------------------------------------------------------
+
+Q44. What is Routing in Express.js ?
+    Answer:
+        -> Routing is the process of directing incoming HTTP requests to the appropriate handler functions based on the
+           requests method (eg. GET, POST) and the url path
+
+
+Q45. What us the difference between middleware and routing in Express?
+    Answer:
+        Middleware:
+            -> Middleware are functions
+            -> Middleware functions can access and the request and response objects, then they can
+                a. Perform some actions(logic like authorization)
+                b. End the request - response cycle
+                c. Call the next middleware function.
+
+            -> Routing:
+                Routing is a process of directing incoming HTTP requests to the appropriate handler functions (GET, PUT, POST, DELETE etc.).
+
+Q46. How to implement routing? How do you define routes in Express.js ?
+    Answer:
+        const express = requires('express');
+        const app = express();
+
+        //define a route for handling GET requests
+        app.get("/",(req,res)=>{
+            res.send("Happy Coding");
+        });
+        //define a route for handling POST requests
+        app.post("/login",(req,res)=>{
+            //login logic
+        });
+
+Q47. How to handle Routing in Express.js in real applications.
+    Answer:
+        const express = require("express");
+        const app = express();
+
+        //middlewares
+
+        //controllers
+        const userController = require("/user/UserController");
+        const productController = require("/user/ProductController");
+
+        //Routes
+        app.post("/user/login",userController.login);
+        app.get("/product/getAllProducts",productController.getAllProducts);
+
+        //listen
+        app.listen
+
+Q48. What are Route Handlers ?
+    Answer:
+        -> Route handler is the second argument passed to app.get() or app.post()
+        -> Route handler function is used to process the request and generate a response.
+        <!-- app.get("/",(req,res)=>{
+            res.send("Happy Coding");
+        }); -->
+
+        Below code is called Route Handler
+
+        (req,res)=>{
+            res.send("Happy Coding");
+        }
+
+Q49. What are Route Parameters in Express.js ?
+    Answer:
+        app.get("/users/:userId",(req,res)=>{
+            const userId = req.params.userId;
+            res.send(`User Id: ${userId}`);
+        });
+
+    NOTE: yaha user id hee route parameter hai or isse aise access krte hai
+
+
+                                                        Routing 2
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+Q50. What are Router objects and Router methods and how to implement them ?
+    Answer:
+
+        -> The router object is a mini version of an Express application which is used for handling routes.
+        -> Router methods are functions provided by the Router object to define routes for different HTTP methods (GET, POST, DELETE etc.).
+
+        -> Impement Router Object:
+
+                    const express = require("express");
+
+                    //create router object
+                    const router = express.Router();
+
+                    //Define a route for the root URL ('/')
+                    router.get("/",(req,res)=>{
+                        res.send("Happy Coding");
+                    });
+
+                    //exports the router object
+                    module.exports = router;
+
+
+            -> Use Router Method:
+
+                    const express = require("express");
+                    const router = require("router");
+
+                    const app = express();
+
+                    //mount the router object on a path
+                    app.use("/api", router);
+
+                    //start the server
+                    app.listen();
+
+Q51. What are the types of Router Methods ?
+    Answer:
+        1. router.get(path,callback)
+        1. router.post(path,callback)
+        1. router.put(path,callback)
+        1. router.delete(path,callback)
+
+Q52. What is the difference between app.get() and router.get() method ?
+    Answer:
+        app.get():
+            1. The app.get() method is used to define routes directly on the application object.
+            2. Routes defined using app.get() are automatically mounted on the root path (/).
+            3. Routes defined using app.get() are not modular and cannot be reused in other applications.
+
+        router.get()
+            1. The router.get() method is used to define routes on a router object.
+            2. Routes defined using router.get() are not automatically mounted; they must be explicity mounted using app.use()
+            3. Routes defined using router.get() are modular and can be reused in other applications by exporting the router object.
+
+Q53. What is exoress.Router() in Express.js ?
+    Answer:
+                -> express.router is a class in Express.js that returns a new router object.
+
+                    const express = require("express");
+
+                    //create router object
+                    const router = express.Router();
+
+                    //Define a route for the root URL ('/')
+                    router.get("/",(req,res)=>{
+                        res.send("Happy Coding");
+                    });
+
+                    //exports the router object
+                    module.exports = router;
+
+
+Q54. What is Route Chaining in Express.js ?
+    Answer:
+
+        -> Route chaining is a process defining multiple route handlers for a single route.
+        -> This pattern helps in modularity, organizing code, improving readibility, and separating concerns.
+
+        const express = require('express');
+        const app = express();
+
+        function middleware1(req,res,next){
+            console.log('Middleware 1');
+            next();
+        }
+        function middleware2(req,res,next){
+            console.log('Middleware 2');
+            next();
+        }
+
+        //Route chaning example
+        app.get("/route",middleware1,middleware2,(req,res)=>{
+            console.log("Router handler");
+            res.send("Route chaning example");
+        });
+
+        app.listen()
+
+Q55. What is Route Nesting in Express.js ?
+    Answer:
+        -> Route nesting organize routes hierarchically by grouping related routes under a common URL prefix.
+        -> Advantage: This allow you to create more modular and structured routes, making your codebase easier to manage and maintain.
+            Eg.
+            1. www.google.com/users/profile
+            2. www.google.com/users/notifications
+
+            const express = require("express");
+            const userRouter = express.Router();
+
+            //www.google.com/users
+            userRouter.get('/',(req,res)=>{
+                res.send("Users home page");
+            });
+
+            //www.google.com/users
+            userRouter.get('/profile',(req,res)=>{
+                res.send("Users profile page");
+            });
+
+
+            module.exports = userRouter;
+
+
+
+                                                 Template Engines
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Q56. What are Template Engines in Express.js ?
+    Answer:
+        -> Template engines are libraries that enable developers to generate dynamic HTML content by combining static HTML template with data.
+
+        <html>
+            <p>Hello <%=data%></p>
+        </html>
+
+Q57. Name some template engine libraries ?
+    Answer:
+        1. EJS
+        2. Handlebars
+        3. Pug(formerly jade)
+        4. Mustache
+        5. Nunjucks
+
+Q58. How to implement EJS templating engine in a Express.js application ?
+    Answer:
+
+        const express = require('express');
+        const app = express();
+
+        //set view engine to ejs
+        app.set('view engine', 'ejs');
+
+        //set the views directory
+        app.set('views',path.join(__dirname, 'views'));
+
+        //and the set title inside any route.
+        app.get('/',(req,res)=>{
+            res.sender('index',{title: 'Node.js with EJS'});
+        });
+
+        app.listen();
+
+        1. npm install ejs
+        2. create any file like index.ejs and wite html code
+        3. if you want to use dynamic data then use inside like html code like (<%= title %>)
+
+
+------------------------------------------------------REST API------------------------------------------------------------------
+
+Q59. What is REST & RESTFUL API ?
+    Answer:
+        -> REST(Representational State Transfer) is a architectural style for designing networked applications(REST is a set of guidelines for creating API's)
+        -> RESTful API is a service which follow REST principles/guidelines.
+
+Q60. What are Top 5 REST guidelines and the advantages of them ?
+    Answer:
+        REST GUIDELINES
+        ---------------
+            1. Separation of Client And Server
+                The implementation of the client and the server must be done independently.
+                Advantage: Independence allows easier maintenance, scalability and evolution.
+            2. Stateless
+                The server will not store anything about the latest HTTP request the client made.
+                Advantage: It will treat every request as new request. It simlifies server implementation as it is not overloading it with state management.
+            3. Uniform Interface
+                Identify the resources by URL (eg. www.abc.com/api/question)
+                Advantage: Standarized URLs, making it easy to understand and use the API.
+            4. Cacheable
+                The API response should be cacheable to improve the performance.
+                Advantage: Caching API responses Improves performances by reducing the need of repeated requests to the server.
+            5. Layered System
+                The system sould follow layered pattern.
+                Advantage: A layered system, such as the Model-View-Controller (MVC) pattern, promotes modular design and separation of concerns.
+
+Q61. What are difference between REST API and SOAP API ?
+    Answer:
+        REST API:
+            -> Architecture: REST is an architectural state.
+            -> Potocol: Uses HTTP & HTTPS.
+            -> Message Format: Uses light-weight formats like JSON, XML.
+            -> State: Stateless
+            -> Error Handling: Relies on HTTP status code.
+            -> Performance: Generally lightweight and faster.
+
+        SOAP API:
+            -> Architecture: SOAP (Simple Object Access Protocol) is a protocol.
+            -> Protocol: Can use various protocols (HTTP, SMTP etc.)
+            -> Message format: Typically uses XML.
+            -> State: Can be stateless and stateful.
+            -> Error handling: Defines it own fault mechanism.
+            -> Performace: Can be slower due to XML processing.
+
+Q62. What are HTTP Verbs and HTTP methods?
+    Answer:
+        -> HTTP methods are also known as HTTP verbs, are set of actions that a client can take on a resource.
+
+Q63. What are GET, POST, PUT, & DELETE HTTP methods ?
+    Answer:
+        GET:
+            -> Retrieve data from a specified resource
+            -> We can get particular user data then pass the id over the url and get the response.
+
+        POST:
+            -> Submit data to be processed
+            -> must send data into request
+
+        PUT:
+            -> Used to update the resource
+            -> If user not available then it will create new user
+
+        DELETE:
+            -> Used to delete the resource.
+
+Q64. What is the difference between PUT and PATCH methods?
+    Answer:
+        PUT and PATCH both are used to update the resource.
+
+        PUT:
+            PUT is used to replace the whole fields.
+        PATCH:
+            PATCH is used to replace only the specific field.
+
+Q65. Explain the concept of Idempotence in RESTFUL APIs ?
+    Answer:
+        The output response will be same whether no's of requests received that is called Idempotence.
+
+Q66. What are the roles of Status Codes in RESTFUL API's ?
+    Answer:
+        Status codes are used to convey the results of a client's request.
+
+
+--------------------------------------------REST API - CORS, Serialization, Deserialiation, Others---------------------------------------------------
+
+
+Q67.  What is CORS in RESTFUL API's ?
+    Answer:
+        CORS ka matlab hai ki dusre domain se data access nhi kar sakte hai, agar karna chahte hai to you should allow CORS
+
+Q68. What are serialization and Deserialization ?
+    Answer:
+        Serialization: Conversion from Object to JSON.
+            Lightweight, So easy to store, transmited or reconstructed later.
+        Deserialization: Conversion from JSON to Object.
+            Heavy weight convert binary/xml/json data back to an object.
+
+Q69. What are the types of serialization ?
+    Answer:
+        1. Binary
+        2. XML
+        3. JSON
+
+Q70. How to Serialize and Deserialize in node ?
+    Answer:
+
+        Serialization
+        ---------------------------
+        const obj = {name:"ram",email:"ram@gmail.com"}
+        const data = JSON.stringyfy(obj);
+
+        Deserialization
+        ----------------------------
+        const data = JSON.parse(obj);
+
+Q71. Explain the concept of versioning in RESTFUL API's ?
+    Answer:
+        https://www.google.com/v1/getAllproducts
+
+Q72. What is an API Document ? What are the popular documentation formats ?
+    Answer:
+        We can use many tools like
+            1. Swagger
+            2. Blueprint
+            3. RAML
+
+Q73. What is the typical structure of a REST API project in NODE ?
+    Answer:
+        src
+            controllers
+            models
+            routes
+            utils
+        App.js
+
+  ------------------------------------REST API Authentication & Authorization------------------------------------------------
+
+Q74. What is the role of hashing and salt in securing password ?
+    Answer:
+        -> install bcrypt.js  (for encrypt and decrypt)
+        -> and we have to pass two things for encoding the password into function
+        -> one will be hashing code, and anathor will be salting code
+        -> one the basis of these things we can secure our password.
+
+
+----------------------------------------------Error Handling----------------------------------------
+
+Q75. What is Error Handling ? In how many ways you can do error handling in Node.js ?
+    Answer:
+        Error handling is the process of managing errors that occur during the execution of a program or system.
+
+            1. Try.Catch (Sync)
+            2. Error-First Callbacks (Async)
+            3. Promises (Async)
+            4. Try-Catch with async-await (Async)
+
+Q76. How to handle errors in synchronous operation using try-catch-finally ?
+    Answer:
+        try{
+            throw new Error("Synchronous error");
+        }catch(error){
+            console.log("Error Caught: "+error.message);
+        }finally{
+            console.log("finally block always executes");
+        }
+
+        //output
+        // Error Caught: Synchronous error
+        // Finally block executed
+
+Q77. What is Error-First Callbacks ?
+    Answer:
+        -> Error - First Callbacks is a conventional in Node.js for handling asynchronous operations.
+        -> They arre called Error-First Callbacks because the first argument of a callback function is reserved for an object.
+
+Q78. How to handle errors using Promises ?
+    Answer:
+        const asyncOperations = new Promise((resolve,reject)=>{
+            if(operationSuccessfull){
+                resolve(result);
+            }else{
+                reject(new Error("Operation failed"));
+            }
+        });
+
+        asyncOperations
+            .then((result)=> console.log(result))
+            .catch((error)=> console.error(error.message));
+
+Q79. How to handle errors while using async-await ?
+    Answer:
+        try{}catch{}
+
+Q80. How can you debug Node.js application ?
+    Answer:
+        1. console.log()
+        2. debugger statement
+        3. Node.js inspector
+        4. Visual studio code debugger
+        5. Chrome dev tools
+
+
+Q. Lookup:
+--------------------
+
+db.orders.aggregate([
+  {
+    $lookup: {
+      from: "customers",
+      localField: "customerId",
+      foreignField: "_id",
+      as: "customerDetails"
+    }
+  }
+]);

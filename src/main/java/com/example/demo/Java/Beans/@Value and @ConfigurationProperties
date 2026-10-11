@@ -1,0 +1,17 @@
+@Value: is used to read single property from application.properties/yaml file
+@ConfigurationProperties: is used to read multiple properties from application.properties/yaml file
+
+    @Value("${app.name}")
+    private String appName;
+
+
+    @Component
+    @ConfigurationProperties(prefix = "app")
+    public class AppConfig {
+
+        private String name;
+        private int timeout;
+        private String url;
+
+        // Getters and setters
+    }
