@@ -1,0 +1,27 @@
+@Service
+public class OrderService {
+
+    private final UserRepository userRepository;
+    private final PaymentRepository paymentRepository;
+
+    public OrderService(UserRepository userRepository,
+                        PaymentRepository paymentRepository) {
+        this.userRepository = userRepository;
+        this.paymentRepository = paymentRepository;
+    }
+
+    @Transactional
+    public void createUserAndPayment() {
+
+        User user = new User();
+        user.setName("Rahul");
+        userRepository.save(user);
+
+        Payment payment = new Payment();
+        payment.setAmount(1000);
+        paymentRepository.save(payment);
+
+        // Testing ke liye jaanbujhkar exception
+        throw new RuntimeException("Payment failed");
+    }
+}

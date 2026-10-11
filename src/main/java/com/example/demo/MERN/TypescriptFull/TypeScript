@@ -1,0 +1,448 @@
+Q. What is TypeScript?
+    Answer:
+    -------
+        TypeScript, JavaScript का superset है, जिसमें static type checking मिलती है। इससे code लिखते समय type-related errors पकड़े जा सकते हैं।
+
+            let username: string = "Rahul";
+            let age: number = 30;
+            username = 100; // Error: number is not assignable to string
+
+2. What is the difference between type and interface?
+    Answer:
+    -------
+        Interface
+        ---------
+              interface Person{
+                name: string
+              }
+
+              interface Details extends Person{
+                age: number
+              }
+
+              const details: Details = {
+                name: "akhil",
+                age: 33
+              }
+
+              // display output
+              <h2>Name: {details.name}</h2>
+              <h2>Age: {details.age}</h2>
+
+        type
+        -----
+              type Person={
+                name:string
+              }
+
+              type Details = Person & {
+                age: number
+              }
+
+              const details: Details={
+                  name:"amir",
+                  age: 30
+              }
+
+              // display output
+              <h3>Name: {details.name}</h3>
+              <h3>Age: {details.age}</h3>
+
+3. What is the difference between any, unknown, and never?
+    Answer
+    ------
+        any
+        ----
+            let a: any = 20;
+
+            a = "Hello";    // ✅ Valid
+            a = true;      // ✅ Valid
+            a = { name: "Akhil" }; // ✅ Valid
+
+        unknown
+        -------
+            let data: unknown = 20;
+
+            // console.log(data.toUpperCase()); // ❌ Error
+
+            if (typeof data === "string") {
+              console.log(data.toUpperCase());
+            } else if (typeof data === "number") {
+              console.log(data.toFixed(2));
+            }
+
+        never
+        -----
+            function fail(): never {
+              throw new Error("Failed");
+            }
+
+            function infinite(): never {
+              while (true) {
+                 // Never ends
+              }
+            }
+
+            <h3>Name: {infinite()}</h3>
+
+4. What are Union and Intersection types?
+    Answer:
+    ------
+        union
+        -----
+              let id: string | number;
+              id = "hello";
+              id = 30;
+
+        intersection
+        -------------
+              type Person={
+                name:string
+              }
+
+              type Details= Person &{
+                age:number
+              }
+
+              const details:Details={
+                name:"amir",
+                age:30
+              }
+
+              //output result
+               <h3>Name: {details.name}</h3>
+               <h3>Age: {details.age}</h3>
+
+5. What is Type Inference?
+    Answer:
+        जब TypeScript खुद value से type पहचान लेता है, उसे type inference कहते हैं।
+
+        let city = "Delhi";
+
+        city = "Noida"; // Valid
+        // city = 100;  // Error
+
+6. What is Type Assertion?
+    Answer:
+        जब developer TypeScript को बताता है कि किसी value का type क्या मानना है, उसे type assertion कहते हैं।
+
+        let value: unknown = "TypeScript";
+        let length = (value as string).length;
+        console.log(length); // 10
+
+7. What is the difference between null and undefined?
+    Answer:
+        - undefined: सामान्यतः value assign नहीं हुई है।
+        - null: जानबूझकर empty value represent की गई है।
+
+            let name: string | null = null;
+            let age: number | undefined;
+
+            age = 25;
+            name = "Rahul";
+
+8. What is the difference between void and never?
+    Answer:
+        void: Function सामान्य रूप से return करता है, लेकिन उपयोगी return value नहीं देता।
+        never: Function सामान्य रूप से कभी complete नहीं होता, उदाहरण के लिए हमेशा exception throw करना।
+
+            function printMessage(): void {
+              console.log("Hello");
+            }
+
+            function fail(): never {
+              throw new Error("Something went wrong");
+            }
+
+9. What are optional and readonly properties?
+    Answer:
+        age?: Property optional है।
+        readonly id: Property को initialization के बाद सामान्य assignment से modify नहीं कर सकते।
+
+        interface User {
+          readonly id: number;
+          name: string;
+          age?: number;
+        }
+
+        const user: User = {
+          id: 1,
+          name: "Rahul"
+        };
+
+        user.name = "Amit"; // Valid
+        // user.id = 2;     // Error
+
+10. What are Literal Types?
+    Answer:
+        Literal types में variable को specific values तक सीमित किया जाता है।
+
+            type Status = "pending" | "success" | "failed";
+            let status: Status = "pending";
+            status = "success"; // Valid
+            // status = "done"; // Error
+
+11. What are Generics?
+    Answer:
+          function addition<T>(value:T){
+            if(value == "+"){
+              console.log(10+30);
+            }
+            if(value == "*"){
+              console.log(10*30);
+            }
+            if(value == "-"){
+              console.log(10-30);
+            }
+            if(value == "/"){
+              console.log(10/30);
+            }
+          }
+
+          <button onClick={()=>addition("+")}>Add Data</button>
+          <button onClick={()=>addition("*")}>multiply Data</button>
+          <button onClick={()=>addition("-")}>substract Data</button>
+          <button onClick={()=>addition("/")}>divide Data</button>
+
+12. What is the difference between keyof and typeof?
+    Answer:
+        const user = {
+          name: "Rahul",
+          age: 30
+        };
+
+        type User = typeof user;
+        // { name: string; age: number }
+
+        type UserKeys = keyof User;
+        // "name" | "age"
+
+13. What is Type Narrowing?
+    Answer:
+        जब checks के जरिए किसी broad type को अधिक specific type तक सीमित किया जाता है, उसे narrowing कहते हैं।
+
+            function printValue(value: string | number) {
+              if (typeof value === "string") {
+                console.log(value.toUpperCase());
+              } else {
+                console.log(value.toFixed(2));
+              }
+            }
+
+            printValue("hello"); // HELLO
+            printValue(12.5);    // 12.50
+
+14. What are Type Guards?
+    Answer:
+        Type guard ऐसा check है जो TypeScript को किसी value का type पहचानने में मदद करता है।
+            function isString(value: unknown): value is string {
+              return typeof value === "string";
+            }
+
+            function display(value: unknown) {
+              if (isString(value)) {
+                console.log(value.toUpperCase());
+              }
+            }
+
+            यहाँ value is string को type predicate कहते हैं।
+
+15. What are Tuples?
+    Answer:
+        Tuple एक array-like structure है जिसमें elements के types और positions निर्धारित किए जा सकते हैं।
+
+            let employee: [number, string, boolean];
+            employee = [101, "Rahul", true];
+            // employee = ["Rahul", 101, true]; // Error
+
+            let user: [string, number, boolean] = ["Amir", 30, true];
+
+            console.log(user[0]); // Amir
+            console.log(user[1]); // 30
+            console.log(user[2]); // true
+
+16. What are Enums?
+    Answer:
+        Enums related named constants को group करते हैं।
+
+            enum Direction {
+              Up,
+              Down,
+              Left,
+              Right
+            }
+
+            const move: Direction = Direction.Up;
+
+            console.log(move); // 0
+
+        String enum का उदाहरण:
+            enum Status {
+              Pending = "PENDING",
+              Success = "SUCCESS"
+            }
+
+17. What are Index Signatures?
+    Answer:
+        जब object में keys dynamic हों और उनका type एक जैसा हो, तब index signature उपयोग कर सकते हैं।
+
+        interface Scores {
+          [subject: string]: number;
+        }
+
+        const marks: Scores = {
+          Maths: 90,
+          Science: 85
+        };
+
+18. What are Function Overloads?
+    Answer:
+    -------
+        Function overloads से एक ही function के लिए अलग-अलग call signatures define कर सकते हैं।
+
+            function format(value: string): string;
+            function format(value: number): string;
+
+            function format(value: string | number): string {
+              return String(value);
+            }
+
+            format("Hello");
+            format(100);
+
+19. What is Structural Typing?
+    Answer:
+    ------
+        TypeScript में objects की compatibility मुख्यतः उनके structure पर आधारित होती है, केवल उनके declared नाम पर नहीं।
+
+            type Person = { name: string };
+            const employee = { name: "Rahul", salary: 50000 };
+            const person: Person = employee; // Valid
+
+21. What are Utility Types?
+    Answer:
+    -------
+        Utility types मौजूदा types से नए types बनाने में मदद करते हैं।
+
+        interface User {
+          id: number;
+          name: string;
+          email: string;
+        }
+
+        type PartialUser = Partial<User>;
+        type RequiredUser = Required<PartialUser>;
+        type UserPreview = Pick<User, "id" | "name">;
+        type UserWithoutEmail = Omit<User, "email">;
+
+22. What are Record, Exclude, Extract, and NonNullable?
+    Answer:
+    ------
+        type Roles = "admin" | "user" | "guest";
+        type Permissions = Record<Roles, boolean>;
+
+        type PublicRoles = Exclude<Roles, "admin">;
+        // "user" | "guest"
+
+        type SelectedRoles = Extract<Roles, "admin" | "user">;
+        // "admin" | "user"
+
+        type Value = NonNullable<string | number | null>;
+        // string | number
+
+23. What are Mapped Types?
+    Answer:
+    -------
+        Mapped types किसी existing type की properties पर iterate करके नया type बनाते हैं।
+
+        type ReadonlyType<T> = {
+          readonly [K in keyof T]: T[K];
+        };
+
+        type User = {
+          name: string;
+          age: number;
+        };
+
+        type ReadonlyUser = ReadonlyType<User>;
+
+24. What are Conditional Types?
+    Answer:
+    ------
+        Conditional types किसी type condition के आधार पर अलग type चुनते हैं।
+
+        type Result<T> = T extends string ? "Text" : "Other";
+
+        type A = Result<string>; // "Text"
+        type B = Result<number>; // "Other"
+
+25. What is the infer keyword?
+    Answer:
+    -------
+        infer conditional types के अंदर किसी type का हिस्सा infer करने के लिए उपयोग होता है।
+
+26. What is Declaration Merging?
+    Answer:
+    -------
+        जब TypeScript समान नाम वाले compatible interface declarations को एक declaration में merge करता है, उसे declaration merging कहते हैं।
+
+        interface User {
+          name: string;
+        }
+
+        interface User {
+          age: number;
+        }
+
+        const user: User = {
+          name: "Rahul",
+          age: 30
+        };
+
+27. What are .d.ts files?
+    Answer:
+        Declaration files types की जानकारी देते हैं, बिना implementation code लिखे।
+
+        // greeting.d.ts
+        declare function greet(name: string): string;
+
+28. What are Generic Constraints using extends?
+    Answer:
+    -------
+        Generic constraints किसी generic type parameter के लिए requirements तय करते हैं।
+
+        function getLength<T extends { length: number }>(
+          value: T
+        ): number {
+          return value.length;
+        }
+
+        getLength("Hello");      // 5
+        getLength([1, 2, 3]);    // 3
+        // getLength(100);       // Error
+
+29. What are Template Literal Types?
+    Answer:
+    ------
+        Template literal types string literal types को combine करके नए string types बनाते हैं।
+
+        type EventName = "click" | "change";
+
+        type HandlerName = `on${Capitalize<EventName>}`;
+        // "onClick" | "onChange"
+
+30. What is the difference between as const and readonly?
+    Answer:
+        as const किसी literal expression की inferred properties को अधिक specific और readonly बनाता है। readonly किसी property या type की mutability को restrict करता है।
+
+        const config = {
+          mode: "production",
+          retries: 3
+        } as const;
+
+        // config.mode = "development"; // Error
+        // config.retries = 5;          // Error
+
+        interface User {
+          readonly id: number;
+        }
